@@ -5,15 +5,21 @@ package io.zipcoder;
  * correctly every time.  Make the run method thread safe.
  */
 public class SafeCopier extends Copier {
+
+   private StringBuffer sb;
+
     public SafeCopier(String toCopy) {
         super(toCopy);
+
+       this.sb=new StringBuffer();
     }
 
     public void run() {
 
-//        while(stringIterator.hasNext()){
-//            this.copied += stringIterator.next();
+        while (stringIterator.hasNext()) {
 
+            sb.append(stringIterator.next()).append(" ");
         }
+        this.copied = sb.toString();
     }
-
+}
